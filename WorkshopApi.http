@@ -1,6 +1,43 @@
 @WorkshopApi_HostAddress = http://localhost:5194
 
-GET {{WorkshopApi_HostAddress}}/weatherforecast/
+GET {{WorkshopApi_HostAddress}}/api/workshops
 Accept: application/json
 
 ###
+
+GET {{WorkshopApi_HostAddress}}/api/workshops/1
+Accept: application/json
+
+###
+
+GET {{WorkshopApi_HostAddress}}/api/workshops/available
+Accept: application/json
+
+###
+
+POST {{WorkshopApi_HostAddress}}/api/workshops
+Content-Type: application/json
+
+{
+  "title": "ASP.NET Core API",
+  "description": "Build a simple Web API.",
+  "date": "2026-12-10T14:00:00Z",
+  "venue": "Room 202",
+  "capacity": 25,
+  "registrationDeadline": "2026-12-09T23:59:00Z"
+}
+
+###
+
+POST {{WorkshopApi_HostAddress}}/api/workshops/1/register/1001
+Content-Type: application/json
+
+{
+  "studentName": "Caleb",
+  "studentEmail": "caleb@example.com"
+}
+
+###
+
+GET {{WorkshopApi_HostAddress}}/api/students/1001/workshops
+Accept: application/json

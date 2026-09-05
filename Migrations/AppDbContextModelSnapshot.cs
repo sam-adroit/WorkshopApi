@@ -49,6 +49,9 @@ namespace WorkshopApi.Migrations
 
                     b.HasKey("RegistrationId");
 
+                    b.HasIndex("WorkshopId", "StudentId")
+                        .IsUnique();
+
                     b.ToTable("Registrations");
                 });
 
@@ -84,6 +87,28 @@ namespace WorkshopApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Workshops");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Capacity = 20,
+                            Date = new DateTime(2026, 10, 15, 14, 0, 0, DateTimeKind.Utc),
+                            Description = "Learn the basics of C# programming.",
+                            RegistrationDeadline = new DateTime(2026, 10, 14, 23, 59, 0, DateTimeKind.Utc),
+                            Title = "Introduction to C#",
+                            Venue = "Room 101"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Capacity = 15,
+                            Date = new DateTime(2026, 11, 5, 15, 0, 0, DateTimeKind.Utc),
+                            Description = "Build practical PostgreSQL skills.",
+                            RegistrationDeadline = new DateTime(2026, 11, 4, 23, 59, 0, DateTimeKind.Utc),
+                            Title = "PostgreSQL Essentials",
+                            Venue = "Lab 2"
+                        });
                 });
 #pragma warning restore 612, 618
         }
